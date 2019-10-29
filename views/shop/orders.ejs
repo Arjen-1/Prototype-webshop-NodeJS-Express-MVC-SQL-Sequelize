@@ -1,0 +1,20 @@
+<%- include('../partials/head.ejs') %>
+</head>
+<body>
+<%- include('../partials/navigation.ejs') %>
+    <main>
+        <% if (orders.length > 0){ %>
+        orders:
+            <% orders.forEach(order=> { %>
+                <h5>. <%=order.id %></h5>
+                    <% order.products.forEach(item=> { %>
+                        <p> <%=item.title %></p>
+                    <% }) %>
+                    <br>
+                    <br>
+            <% }) %>
+        <% } else {%>
+            There are no orders
+        <% }%>
+    </main>
+<%- include('../partials/end.ejs') %>

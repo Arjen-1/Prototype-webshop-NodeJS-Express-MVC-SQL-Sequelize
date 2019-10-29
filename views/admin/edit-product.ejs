@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=docTitle%></title> 
+    <link rel="stylesheet" href="/styles.css"> -->
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <!-- <header class="default__header">
+        <nav>
+            <ul>
+                <li><a href="/">Shop</a></li>
+                <li><a href="/admin/add-product">Add product</a></li>
+            </ul>
+        </nav>
+    </header> -->
+    <%- include('../partials/navigation.ejs') %>
+    <% if( editingProduct ){%>
+    <main>
+        <form action="/admin/product-edit/<%=productToEdit.id%>" method="POST">
+            <h4 >Edit product: <%=productToEdit.title%></h4>
+            <input class="default_input" type="text" name="title" id="" value="<%=productToEdit.title%>">
+            <input class="default_input" type="text" name="imageUrl" id="" value="<%=productToEdit.imageUrl%>">
+            <textarea class="default_input" rows="5" name="description" id="" value="<%=productToEdit.description%>"></textarea>
+            <input class="default_input" type="number" name="price" id="" value="<%=productToEdit.price%>">
+            <input type="hidden" name="id" value="<%=productToEdit.id%>">
+            <button class="add__button" type="submit">Edit product</button>
+        </form>
+    </main>
+    <% } else { %>
+    <main>
+        <form action="/admin/product" method="POST">
+            <h4 >Add product</h4>
+            <input class="default_input" type="text" name="title" id="" value="">
+            <input class="default_input" type="text" name="imageUrl" id="">
+            <textarea class="default_input" rows="5" name="description" id=""></textarea>
+            <input class="default_input" type="number" name="price" id="">
+            <button class="add__button" type="submit">Add product</button>
+        </form>
+    </main>
+    <% }   %>
+<!-- </body>
+</html> -->
+<%- include('../partials/end.ejs') %>
